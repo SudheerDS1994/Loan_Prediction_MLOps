@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: loan-predictor-service
+  namespace: default
+  labels:
+    app: loan-predictor
+spec:
+  type: LoadBalancer
+  selector:
+    app: loan-predictor
+  ports:
+  - name: http
+    protocol: TCP
+    port: 80
+    targetPort: 8080
+  sessionAffinity: ClientIP
