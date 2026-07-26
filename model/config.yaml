@@ -1,0 +1,35 @@
+# Model Configuration
+model:
+  name: "loan_predictor"
+  version: "1.0.0"
+  type: "logistic_regression"
+
+training:
+  test_size: 0.2
+  random_state: 42
+  model_params:
+    max_iter: 1000
+    random_state: 42
+    solver: "lbfgs"
+
+data:
+  train_path: "data/train.csv"
+  test_path: "data/test.csv"
+  target_column: "loan_approval"
+  
+features:
+  - "age"
+  - "income"
+  - "credit_score"
+  - "loan_amount"
+  - "employment_years"
+
+mlflow:
+  tracking_uri: "http://localhost:5001"
+  experiment_name: "loan_prediction"
+  
+metrics:
+  - "accuracy"
+  - "precision"
+  - "recall"
+  - "f1_score"
